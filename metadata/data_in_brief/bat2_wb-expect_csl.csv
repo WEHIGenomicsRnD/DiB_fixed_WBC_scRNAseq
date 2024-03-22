@@ -1,0 +1,15 @@
+[gene-expression],,
+reference,/stornext/Projects/score/Indexes/refdata-gex-GRCh38-2020-A,
+probe-set,/stornext/System/data/apps/cellranger/cellranger-7.1.0/probe_sets/Chromium_Human_Transcriptome_Probe_Set_v1.0.1_GRCh38-2020-A.csv,
+no-bam,TRUE,
+,,
+[libraries],,
+fastq_id,fastqs,feature_types
+G000254_WB_fix-bat2,/stornext/Projects/GenomicsRnD/brown.d/G000254_fixed_neutrophil,Gene Expression
+,,
+[samples],,
+sample_id,probe_barcode_ids,description,expect_cells
+AS5_fix300k_probe300k,BC001,RBC-depleted-WBC,3009
+AS6_fix600k_probe600k,BC002,RBC-depleted-WBC,7168
+AS7_fix300k_probe300k,BC003,RBC-depleted-WBC,4265
+AS8_fix600k_probe600k,BC004,RBC-depleted-WBC,10000
