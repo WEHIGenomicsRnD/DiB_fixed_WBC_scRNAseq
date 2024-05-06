@@ -12,4 +12,4 @@ Further insights could be gained by correcting batch and technical effects intro
 
 ## Data availability
 
-The dataset is available at GEO:
+The dataset is available at GEO: GSE266615
