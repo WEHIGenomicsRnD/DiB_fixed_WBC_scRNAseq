@@ -12,15 +12,18 @@
 # USAGE
 # ./beenet analyze --sample-name=... --ref=... --num-barcodes=# <fq.gz files>
 
-SAMPLE="AGI_30";
-BARCODES="10000";
+# Replace BASE with your path to fastq files
+BASE="/stornext/Projects/score/2021_Sequencing_Runs/NN247/";
+# REF is a Honeycomb HIVE specific reference. See https://honeycomb.bio
 REF="/stornext/HPCScratch/home/brown.d/Refs/HIVE/20210603_GRCh38.104";
-OUTDIR="/stornext/Projects/score/2021_Sequencing_Runs/NN247/beenet/AGI_30";
+SAMPLE="AGI_30";
+OUTDIR=${BASE}${SAMPLE};
+BARCODES="10000";
 
 /stornext/HPCScratch/home/brown.d/beenet analyze \
     --sample-name=$SAMPLE \
     --ref=$REF \
     --num-barcodes=$BARCODES \
     --out=$OUTDIR \
-    /stornext/Projects/score/2021_Sequencing_Runs/NN247/fastq/HIVE_AGI_30_S4_L001_R1_001.fastq.gz \
-    /stornext/Projects/score/2021_Sequencing_Runs/NN247/fastq/HIVE_AGI_30_S4_L001_R2_001.fastq.gz;
+    ${BASE}fastq/HIVE_AGI_30_S4_L001_R1_001.fastq.gz \
+    ${BASE}fastq/HIVE_AGI_30_S4_L001_R2_001.fastq.gz;
