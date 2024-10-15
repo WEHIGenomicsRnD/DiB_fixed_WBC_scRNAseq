@@ -32,8 +32,13 @@ To generate some of the figures and tables for data in brief, make some summary 
 ## Read data
 
 ```{r read_sces}
-hive <- readRDS("/stornext/Projects/GenomicsRnD/brown.d/G000254_fixed_neutrophil/HIVE/hive_qcMetrics.sce")
-flex <- readRDS("/stornext/Projects/GenomicsRnD/brown.d/G000254_fixed_neutrophil/SCEs/flex_qcMetrics.sce")
+hive <- readRDS(here::here(
+  "data/SCEs/hive_qcMetrics_sce.rds"
+  ))
+  
+flex <- readRDS(here::here(
+  "data/SCEs/flex_qcMetrics.sce.rds"
+  ))
 ```
 
 Combine the coldata together
