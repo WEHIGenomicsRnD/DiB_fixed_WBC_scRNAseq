@@ -35,6 +35,8 @@ Add the various other cell metadata in this notebook for submission to data in b
 
 ## 10x Genomics Flex data
 
+Note the outputs of 10x Genomics cell Ranger was written to temporary storage. They may be regenerated from the fastqs using cellranger commands from *scripts/bash/data_in_brief/*
+
 ```{r read_sce}
 dir <- "/vast/scratch/users/brown.d/data_in_brief/WB_CSL/outs/count/filtered_feature_bc_matrix/"
 
@@ -48,8 +50,9 @@ sce
 
 ```{r save_base, eval=FALSE}
 sce_orig <- sce
-saveRDS(sce,
-        "/stornext/Projects/GenomicsRnD/brown.d/G000254_fixed_neutrophil/SCEs/flex_basic.sce")
+saveRDS(sce, here::here(
+        "data/SCEs/flex_basic.sce"
+        ))
 ```
 
 ## Add metadata details
@@ -57,18 +60,23 @@ saveRDS(sce,
 Add in the metrics about fixation time, number of cells fixed etc.
 
 ```{r, eval=FALSE}
-aggregaation <- read.delim("/stornext/Projects/GenomicsRnD/brown.d/G000254_fixed_neutrophil/WB_CSL/outs/aggregation.csv", sep=",")
+aggregaation <- read.delim(here::here(
+  "data/WB_CSL/outs/aggregation.csv"), sep=",")
 metadata <- as.data.frame(str_split(aggregaation$sample_id, pattern = "_", simplify = T))
 colnames(metadata) <- c("Batch", "ID", "Fix_num", "Probe_num")
 
 # Write to file and I will manually fix up
-write.csv(metadata, "/stornext/Projects/GenomicsRnD/brown.d/G000254_fixed_neutrophil/WB_CSL/outs/metaadata.csv")
+write.csv(metadata, here::here(
+  "data/WB_CSL/outs/metaadata.csv"
+  ))
 ```
 
 Read in my manually munged cell metadata
 
 ```{r}
-metadata <- read_csv("/stornext/Projects/GenomicsRnD/brown.d/G000254_fixed_neutrophil/WB_CSL/outs/metaadata.csv")
+metadata <- read_csv(here::here(
+  "data/WB_CSL/outs/metaadata.csv"
+  ))
 metadata$Capture <- as.factor(metadata$Capture)
 tb <- as_tibble(colData(sce))
 tb$ID <- colnames(sce)
@@ -116,9 +124,22 @@ metadata(sce)$Platform <- "10x Genomics Flex v1"
 ### Save SCE with quality control
 
 ```{r}
-saveRDS(sce,
-        "/stornext/Projects/GenomicsRnD/brown.d/G000254_fixed_neutrophil/SCEs/flex_qcMetrics.sce")
+saveRDS(sce, here::here(
+        "data/SCEs/flex_qcMetrics.sce.rds"
+        ))
 ```
+
+Check the sce object and check metadata
+
+```{r, eval=FALSE}
+sce <- readRDS(here::here(
+  "data/SCEs/flex_qcMetrics.sce.rds"
+))
+
+colData(sce)
+```
+
+metadata is correct.
 
 ## Session Info
 

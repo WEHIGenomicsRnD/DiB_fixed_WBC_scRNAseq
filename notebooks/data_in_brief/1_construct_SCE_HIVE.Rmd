@@ -23,7 +23,6 @@ library(scuttle)
 library(Matrix)
 library(here)
 library(tidyverse)
-library(DropletUtils)
 ```
 
 # Construct single cell experiment object for data in brief
@@ -39,7 +38,9 @@ The data is not in a nice foraat that can directly be read into a SCE so I do it
 Note the top 10,000 cell barcodes were written to file.
 
 ```{r read_sce_15k}
-fiften <- read_tsv("/stornext/Projects/GenomicsRnD/brown.d/G000254_fixed_neutrophil/HIVE/AGI_15_20220628142630_TCM.tsv.gz")
+fiften <- read_tsv(here::here(
+  "data/HIVE/AGI_15_20220628142630_TCM.tsv.gz"
+  ))
 fiften <- as.data.frame(fiften)
 # First column is gene symbol
 row.names(fiften) <- fiften[,1]
@@ -54,7 +55,9 @@ fiften$Fix_num <- 15000
 Convert the other sample
 
 ```{r read_sce_30k}
-thirty <- read_tsv("/stornext/Projects/GenomicsRnD/brown.d/G000254_fixed_neutrophil/HIVE/AGI_30_20220628140744_TCM.tsv.gz")
+thirty <- read_tsv(here::here(
+  "data/HIVE/AGI_30_20220628140744_TCM.tsv.gz"
+  ))
 thirty <- as.data.frame(thirty)
 row.names(thirty) <- thirty[,1]
 thirty <- as.matrix(thirty[,(2:10000)])
@@ -78,8 +81,9 @@ sce <- cbind(fiften[keep_genes,],
 
 ```{r save_base}
 sce_orig <- sce
-saveRDS(sce,
-        "/stornext/Projects/GenomicsRnD/brown.d/G000254_fixed_neutrophil/HIVE/hive_basic.sce")
+saveRDS(sce, here::here(
+  "data/SCEs/hive_basic_sce.rds"
+  ))
 ```
 
 ## Add metadata details
@@ -117,9 +121,22 @@ metadata(sce)$Platform <- "Honeycomb HIVE v1"
 ### Save SCE with quality control
 
 ```{r}
-saveRDS(sce,
-        "/stornext/Projects/GenomicsRnD/brown.d/G000254_fixed_neutrophil/HIVE/hive_qcMetrics.sce")
+saveRDS(sce, here::here(
+        "data/SCEs/hive_qcMetrics_sce.rds"
+        ))
 ```
+
+Check the sce object and check metadata
+
+```{r, eval=FALSE}
+sce <- readRDS(here::here(
+  "data/SCEs/hive_qcMetrics_sce.rds"
+))
+
+colData(sce)
+```
+
+metadata is correct.
 
 ## Session Info
 
