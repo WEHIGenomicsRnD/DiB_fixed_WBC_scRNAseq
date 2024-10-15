@@ -12,6 +12,7 @@
 module load cellranger/7.1.0
 
 ID="bat1"
+# Replace BASE with your path to fastq files
 BASE="/stornext/Home/data/allstaff/b/brown.d/Projects/G000254_Fixed_Neutrophil/metadata/data_in_brief/";
 SAMPLE_SHEET_PATH=${BASE}"bat1_wb-expect_csl.csv";
 

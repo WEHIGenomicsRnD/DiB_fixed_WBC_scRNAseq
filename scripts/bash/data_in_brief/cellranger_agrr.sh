@@ -12,6 +12,7 @@
 module load cellranger/7.1.0
 
 ID="WB_CSL"
+# Replace BASE with your path to agrr_file.csv
 BASE="/stornext/Home/data/allstaff/b/brown.d/Projects/G000254_Fixed_Neutrophil/metadata/data_in_brief/";
 SAMPLE_SHEET_PATH=${BASE}"agrr_file.csv";
 
