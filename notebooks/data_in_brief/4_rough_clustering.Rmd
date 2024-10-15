@@ -47,7 +47,9 @@ To generate some of the figures for data in brief, do a rough PCA, clustering an
 Read data
 
 ```{r read_sce_hive}
-hive <- readRDS("/stornext/Projects/GenomicsRnD/brown.d/G000254_fixed_neutrophil/HIVE/hive_qcMetrics.sce")
+hive <- readRDS(here::here(
+  "data/SCEs/hive_qcMetrics_sce.rds"
+  ))
 ```
 
 Have to remove low quality cells or downstream steps fail due to missing values
@@ -137,7 +139,9 @@ p3
 Read data
 
 ```{r read_sce_flex}
-flex <- readRDS("/stornext/Projects/GenomicsRnD/brown.d/G000254_fixed_neutrophil/SCEs/flex_qcMetrics.sce")
+flex <- readRDS(here::here(
+  "data/SCEs/flex_qcMetrics.sce.rds"
+  ))
 ```
 
 Have to remove low quality cells or downstream steps fail due to missing values
