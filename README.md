@@ -3,12 +3,18 @@ Code for manuscript: A Dataset Examining Technical Factors on Fixed White Blood 
 
 ## Abstract
 
-Single-cell RNA sequencing (scRNA-seq) is a powerful technology that enables the measurement of gene expression in individual cells. Such precision provides insights into cellular heterogeneity that bulk methods might overlook. Fragile cells, in particular neutrophils, have posed significant challenges for scRNA-Seq due to their ex vivo fragility, high RNase content and consequent loss during cryopreservation.
+This repository provides pre-processing scripts, and basic analyses from the manuscript. The aim was to evaluate single-cell RNA sequencing (scRNA-seq) methods on fragile immune cells, focusing on granulocytes. These cell types present challenges in scRNA-seq due to their high RNase content, fragility, and susceptibility to data loss during cryopreservation.
 
-The introduction of fixed scRNA-Seq methodology offers a promising solution to these challenges. We evaluated the performance of two different commercial platforms on red blood cell-depleted whole blood cells: 10x Genomics Flex v1 and Honeycomb HIVE v1.
-These data are publicly available from the Gene Expression Omnibus database (accession number GSExxx).
+The associated dataset contains healthly RBC depleted blood from humans processed with two technology platforms:
 
-Further insights could be gained by correcting batch and technical effects introduced by storage time after fixation and cell numbers fixed. These data may be used to examine how reflective the transcriptome of neutrophils are of the native environment.
+1. Honeycomb HIVE v1
+2. 10x Genomics Flex v1
+
+The *scripts* directory contains pre-processing scripts that begin with fastq inputs and produce outputs that can be analysed with popular packages such as Scanpy, Seurat and the Bioconductor ecosystem.
+
+The *metadata* directory contains information about the samples and samplesheets required for the preprocessing scripts.
+
+The *notebooks* directory contains R code to read the outputs of pre-processing scripts and generate a SingleCellExperiment object containing associated metadata. There are also notebooks that perform a basic visualisation of the data.
 
 ## Data availability
 
