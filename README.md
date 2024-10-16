@@ -3,7 +3,7 @@ Code for manuscript: **A Dataset Examining Technical Factors on Fixed White Bloo
 
 ## Abstract
 
-This repository provides pre-processing scripts and basic analyses from the associated manuscript. The goal is to evaluate single-cell RNA sequencing (scRNA-seq) methods on fragile immune cells, focusing on granulocytes. These cell types present unique challenges for scRNA-seq due to their high RNase content, fragility, and susceptibility to data loss during cryopreservation.
+This repository provides pre-processing scripts and basic analyses from the associated manuscript. The goal is to evaluate single-cell RNA sequencing (scRNA-seq) technology platforms on fragile immune cells, focusing on granulocytes. These cell types typically produce lower quality data compared to lymphocytes due to their high RNase content, fragility, and susceptibility to data loss during cryopreservation.
 
 The associated dataset contains healthy RBC-depleted blood from humans processed with two technology platforms:
 
